@@ -1,25 +1,14 @@
 <?php
-$content = file_get_contents("php://input");
-$update = json_decode($content, true);
-
-if(!$update)
-{
-  exit;
-}
-
-$message = isset($update['message']) ? $update['message'] : "";
-$messageId = isset($message['message_id']) ? $message['message_id'] : "";
-$chatId = isset($message['chat']['id']) ? $message['chat']['id'] : "";
-$firstname = isset($message['chat']['first_name']) ? $message['chat']['first_name'] : "";
-$lastname = isset($message['chat']['last_name']) ? $message['chat']['last_name'] : "";
-$username = isset($message['chat']['username']) ? $message['chat']['username'] : "";
-$date = isset($message['date']) ? $message['date'] : "";
-$text = isset($message['text']) ? $message['text'] : "";
-
-$text = trim($text);
-$text = strtolower($text);
-
-header("Content-Type: application/json");
-$parameters = array('chat_id' => $chatId, "text" => $text);
-$parameters["method"] = "sendMessage";
-echo json_encode($parameters);
+      $url = "https://api.fattureincloud.it/v1/richiesta/info";
+      $request = array("api_uid" => "295254", "api_key" => "58a05f9b8bd43c554f97a3731a1ddb6e");
+      $options = array(
+          "http" => array(
+              "header"  => "Content-type: text/json\r\n",
+              "method"  => "POST",
+              "content" => json_encode($request)
+          ),
+      );
+      $context  = stream_context_create($options);
+      $result = json_decode(file_get_contents($url, false, $context), true);
+      print_r($result);
+?>
