@@ -48,10 +48,7 @@ elseif($text=="/limite_lungo")
 {
 	$response = $result["limite_lungo"];
 }
-else
-{
-	$response = "Comando non valido!";
-}	
+	
 }
 else
 {
