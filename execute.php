@@ -18,6 +18,8 @@ $username = isset($message['chat']['username']) ? $message['chat']['username'] :
 $date = isset($message['date']) ? $message['date'] : "";
 $text = isset($message['text']) ? $message['text'] : "";
 
+if($text=="/messaggio" || $text=="/limite_breve" || $text=="/limite_medio" || $text=="/limite_lungo") {
+
 $url = "https://api.fattureincloud.it/v1/richiesta/info";
 $request = array("api_uid" => "295254", "api_key" => "58a05f9b8bd43c554f97a3731a1ddb6e");
 $options = array(
@@ -49,6 +51,11 @@ elseif($text=="/limite_lungo")
 else
 {
 	$response = "Comando non valido!";
+}	
+}
+else
+{
+	$response = "Interrogazione non eseguita. Richiesta errata!";
 }
 
 // mi preparo a restitutire al chiamante la mia risposta che è un oggetto JSON
