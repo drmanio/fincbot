@@ -16,11 +16,18 @@ $firstname = isset($message['chat']['first_name']) ? $message['chat']['first_nam
 $lastname = isset($message['chat']['last_name']) ? $message['chat']['last_name'] : "";
 $username = isset($message['chat']['username']) ? $message['chat']['username'] : "";
 $date = isset($message['date']) ? $message['date'] : "";
-$text = isset($message['text']) ? $message['text'] : "";
-// pulisco il messaggio ricevuto togliendo eventuali spazi prima e dopo il testo
-$text = trim($text);
-// converto tutti i caratteri alfanumerici del messaggio in minuscolo
-$text = strtolower($text);
+$url = "https://api.fattureincloud.it/v1/richiesta/info";
+      $request = array("api_uid" => "295254", "api_key" => "58a05f9b8bd43c554f97a3731a1ddb6e");
+      $options = array(
+          "http" => array(
+              "header"  => "Content-type: text/json\r\n",
+              "method"  => "POST",
+              "content" => json_encode($request)
+          ),
+      );
+      $context  = stream_context_create($options);
+      $result = json_decode(file_get_contents($url, false, $context), true);
+      $text = $result["messaggio"];
 // mi preparo a restitutire al chiamante la mia risposta che è un oggetto JSON
 // imposto l'header della risposta
 header("Content-Type: application/json");
