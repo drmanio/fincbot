@@ -10,12 +10,12 @@ if(!$update)
 }
 // assegno alle seguenti variabili il contenuto ricevuto da Telegram
 $message = isset($update['message']) ? $update['message'] : "";
-$messageId = isset($message['message_id']) ? $message['message_id'] : "";
+//$messageId = isset($message['message_id']) ? $message['message_id'] : "";
 $chatId = isset($message['chat']['id']) ? $message['chat']['id'] : "";
-$firstname = isset($message['chat']['first_name']) ? $message['chat']['first_name'] : "";
-$lastname = isset($message['chat']['last_name']) ? $message['chat']['last_name'] : "";
-$username = isset($message['chat']['username']) ? $message['chat']['username'] : "";
-$date = isset($message['date']) ? $message['date'] : "";
+//$firstname = isset($message['chat']['first_name']) ? $message['chat']['first_name'] : "";
+//$lastname = isset($message['chat']['last_name']) ? $message['chat']['last_name'] : "";
+//$username = isset($message['chat']['username']) ? $message['chat']['username'] : "";
+//$date = isset($message['date']) ? $message['date'] : "";
 $text = isset($message['text']) ? $message['text'] : "";
 
 if($text=="/messaggio" || $text=="/limite_breve" || $text=="/limite_medio" || $text=="/limite_lungo") {
