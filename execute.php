@@ -21,7 +21,7 @@
       );
       $context  = stream_context_create($options);
       $result = json_decode(file_get_contents($url, false, $context), true);
-      $text($result["messaggio"]);
+      $text = ($result["messaggio"]);
 // mi preparo a restitutire al chiamante la mia risposta che è un oggetto JSON
 // imposto l'header della risposta     
 header("Content-Type: application/json");
