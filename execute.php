@@ -11,4 +11,3 @@
       $context  = stream_context_create($options);
       $result = json_decode(file_get_contents($url, false, $context), true);
       print_r($result);
-?>
