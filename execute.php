@@ -1,4 +1,6 @@
 <?php
+// includo il file con lo script per fare l'interrogazione generica a Fatture in Cloud
+include "generica.php";
 // recupero il contenuto inviato da Telegram
 $content = file_get_contents("php://input");
 // converto il contenuto da JSON ad array PHP
@@ -18,42 +20,9 @@ $chatId = isset($message['chat']['id']) ? $message['chat']['id'] : "";
 //$date = isset($message['date']) ? $message['date'] : "";
 $text = isset($message['text']) ? $message['text'] : "";
 
-if($text=="/messaggio" || $text=="/limite_breve" || $text=="/limite_medio" || $text=="/limite_lungo") {
 
-$url = "https://api.fattureincloud.it/v1/richiesta/info";
-$request = array("api_uid" => "295254", "api_key" => "58a05f9b8bd43c554f97a3731a1ddb6e");
-$options = array(
-"http" => array(
-"header"  => "Content-type: text/json\r\n",
-"method"  => "POST",
-"content" => json_encode($request)
-),
-);
-$context  = stream_context_create($options);
-$result = json_decode(file_get_contents($url, false, $context), true);
+	$response = generica($text);
 
-if($text=="/messaggio")
-{
-	$response = $result["messaggio"];
-}
-elseif($text=="/limite_breve")
-{
-	$response = $result["limite_breve"];
-}
-elseif($text=="/limite_medio")
-{
-	$response = $result["limite_medio"];
-}
-elseif($text=="/limite_lungo")
-{
-	$response = $result["limite_lungo"];
-}
-	
-}
-else
-{
-	$response = "Interrogazione non eseguita. Richiesta errata!";
-}
 
 // mi preparo a restitutire al chiamante la mia risposta che è un oggetto JSON
 // imposto l'header della risposta
