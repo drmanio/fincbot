@@ -23,7 +23,7 @@ $text = isset($message['text']) ? $message['text'] : "";
 
 if($text=="/acquisti") {
 	$resp = acquisti($text);
-	$response = $resp[0];
+	$response = $resp[0][prossima_scadenza];
 	}
 else {
 	$response = generica($text);
