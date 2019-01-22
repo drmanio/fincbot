@@ -27,7 +27,7 @@ if($text=="/acquisti") {
 	$contaresp = count($resp);
 for ($i=0; $i<$contaresp; $i++)
 {
-  $response = $resp[$i][prossima_scadenza] . "<br/>";
+  $response .= $resp[$i][prossima_scadenza] . "<br/>";
 }
 
 	}
