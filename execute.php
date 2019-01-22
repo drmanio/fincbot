@@ -22,7 +22,7 @@ $chatId = isset($message['chat']['id']) ? $message['chat']['id'] : "";
 $text = isset($message['text']) ? $message['text'] : "";
 
 if($text=="/acquisti") {
-	$response = acquisti[$text];
+	$response = acquisti($text);
 	}
 else {
 	$response = generica($text);
