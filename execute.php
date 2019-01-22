@@ -23,7 +23,12 @@ $text = isset($message['text']) ? $message['text'] : "";
 
 if($text=="/acquisti") {
 	$resp = acquisti($text);
-	$response = $resp[][prossima_scadenza];
+	$contaresp = count($resp);
+for ($i=0; $i<$contaresp; $i++)
+{
+  $response = $acquisti[$i][prossima_scadenza] . "<br/>";
+}
+
 	}
 else {
 	$response = generica($text);
