@@ -27,7 +27,7 @@ if($text=="/acquisti") {
 	$contaresp = count($resp);
 for ($i=0; $i<$contaresp; $i++)
 {
-  $response .= "Scadenza: " . $resp[$i][prossima_scadenza] . " - " . $resp[$i][nome] . " - " . $resp[$i][importo_totale];
+  $response .= "Scadenza: " . $resp[$i][prossima_scadenza] . " - " . $resp[$i][nome] . " - " . number_format($resp[$i][importo_totale],2,",",".");
 	if($contaresp - $i > 1) {
 		$response .= "\r\n";
 	}
