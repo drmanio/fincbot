@@ -14,7 +14,7 @@ function acquisti($text) {
 		$result = json_decode(file_get_contents($url, false, $context), true);
 		
 		if($text=="/acquisti") {
-			$responsef = $result["lista_documenti"];
+			$responsef = $result(["lista_documenti"]["nome"]);
 		}
 	
 	}
