@@ -1,6 +1,6 @@
 <?php
-      $url = "https://api.fattureincloud.it/v1/acquisti/lista";
-      $request = array("api_uid" => "295254", "api_key" => "58a05f9b8bd43c554f97a3731a1ddb6e", "anno" => "2018");
+      $url = "https://api.fattureincloud.it/v1/richiesta/info";
+      $request = array("api_uid" => "295254", "api_key" => "58a05f9b8bd43c554f97a3731a1ddb6e");
       $options = array(
           "http" => array(
               "header"  => "Content-type: text/json\r\n",
@@ -10,6 +10,5 @@
       );
       $context  = stream_context_create($options);
       $result = json_decode(file_get_contents($url, false, $context), true);
-      $text = $result["messaggio"];
-      print_r ($text);
+      print_r($result);
 ?>
