@@ -20,8 +20,12 @@ $chatId = isset($message['chat']['id']) ? $message['chat']['id'] : "";
 //$date = isset($message['date']) ? $message['date'] : "";
 $text = isset($message['text']) ? $message['text'] : "";
 
-
+if($text=="/acquisti") {
+	$response = acquisti[$text];
+}
+else {
 	$response = generica($text);
+}
 
 
 // mi preparo a restitutire al chiamante la mia risposta che è un oggetto JSON
