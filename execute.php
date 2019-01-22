@@ -1,5 +1,6 @@
 <?php
 // includo il file con lo script per fare l'interrogazione generica a Fatture in Cloud
+include "acquisti.php";
 include "generica.php";
 // recupero il contenuto inviato da Telegram
 $content = file_get_contents("php://input");
