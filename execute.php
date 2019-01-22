@@ -22,11 +22,12 @@ $chatId = isset($message['chat']['id']) ? $message['chat']['id'] : "";
 $text = isset($message['text']) ? $message['text'] : "";
 
 if($text=="/acquisti") {
+	
 	$resp = acquisti($text);
 	$contaresp = count($resp);
 for ($i=0; $i<$contaresp; $i++)
 {
-  $response = $acquisti[$i][prossima_scadenza] . "<br/>";
+  $response = $resp[$i][prossima_scadenza] . "<br/>";
 }
 
 	}
