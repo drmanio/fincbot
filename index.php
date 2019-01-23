@@ -24,8 +24,8 @@
       $result2019 = json_decode(file_get_contents($url, false, $context), true);
 
       $result = array();
-      $result[] = $result2018[lista_documenti];
-      $result[] = $result2019[lista_documenti];
+      $result[] = $result2018[lista_documenti][0];
+      $result[] = $result2019[lista_documenti][0];
 
       print_r($result);
 ?>
