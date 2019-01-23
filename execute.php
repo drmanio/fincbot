@@ -37,12 +37,8 @@ if($text=="/acquisti") {
 		}
 	}
 	
-	$conta_lista = count($lista);
-	for ($j=0; $j<$conta_lista; $j++) {
-		$response .= $lista[$j];
-		if($conta_lista - $j > 1) {
-			$response .= "\r\n";
-		}
+	$response = implode ("\r\n", $lista);
+	
 }
 
 else {
