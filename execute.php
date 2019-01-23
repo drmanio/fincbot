@@ -25,17 +25,18 @@ if($text=="/acquisti") {
 	
 	$resp = acquisti($text);
 	$conta_anno = count($resp);
+	$response = array();
 	
 	for ($j=0; $j<$conta_anno; $j++) {
 		
 		$contaresp = count($resp[$j][lista_documenti]);
 		for ($i=0; $i<$contaresp; $i++) {
-			$response .= "Scadenza: " . $resp[$j][lista_documenti][$i][prossima_scadenza] 
+			$response[] = "Scadenza: " . $resp[$j][lista_documenti][$i][prossima_scadenza] 
 				." - Fornitore: " . $resp[$j][lista_documenti][$i][nome] . " - Importo dovuto: € " 
 				. number_format($resp[$j][lista_documenti][$i][importo_totale],2,",",".");
-			if($contaresp - $i > 1) {
-				$response .= "\r\n";
-			}
+			//if($contaresp - $i > 1) {
+			//	$response .= "\r\n";
+			//}
 		}
 	}
 }
