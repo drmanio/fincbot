@@ -37,8 +37,8 @@ if($text=="/acquisti") {
 		}
 	}
 	
-	$lista_ord = sort($lista);
-	$response = implode ("\r\n", $lista_ord);
+	sort($lista, SORT_STRING | SORT_FLAG_CASE);
+	$response = implode ("\r\n", $lista);
 	
 }
 
