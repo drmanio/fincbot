@@ -31,7 +31,7 @@ if($text=="/acquisti") {
 		
 		$contaresp = count($resp[$j][lista_documenti]);
 		for ($i=0; $i<$contaresp; $i++) {
-			$lista[] = "Scadenza: " . $resp[$j][lista_documenti][$i][prossima_scadenza] 
+			$lista[] = "Scadenza: " . date('Y-m-d',strtotime($resp[$j][lista_documenti][$i][prossima_scadenza])) 
 				." - Fornitore: " . $resp[$j][lista_documenti][$i][nome] . " - Importo dovuto: € " 
 				. number_format($resp[$j][lista_documenti][$i][importo_totale],2,",",".");
 		}
