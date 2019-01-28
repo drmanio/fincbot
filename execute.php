@@ -48,7 +48,7 @@ if(($text=="/acquisti") || ($text=="/acquisti consorzio") || ($text=="/acquisti 
 						. substr($resp[$j][lista_documenti][$i][prossima_scadenza],6,4). "-"
 						. substr($resp[$j][lista_documenti][$i][prossima_scadenza],3,2). "-"
 						. substr($resp[$j][lista_documenti][$i][prossima_scadenza],0,2)
-						." - " . $resp[$j][lista_documenti][$i][nome] . " : € " 
+						." - AGRINORDEST : € " 
 						. number_format($resp[$j][lista_documenti][$i][importo_totale],2,",",".");
 				}
 			}
@@ -59,7 +59,7 @@ if(($text=="/acquisti") || ($text=="/acquisti consorzio") || ($text=="/acquisti 
 						. substr($resp[$j][lista_documenti][$i][prossima_scadenza],6,4). "-"
 						. substr($resp[$j][lista_documenti][$i][prossima_scadenza],3,2). "-"
 						. substr($resp[$j][lista_documenti][$i][prossima_scadenza],0,2)
-						." - " . $resp[$j][lista_documenti][$i][nome] . " : € " 
+						." - GAION : € " 
 						. number_format($resp[$j][lista_documenti][$i][importo_totale],2,",",".");
 				}
 			}
