@@ -21,7 +21,7 @@ $chatId = isset($message['chat']['id']) ? $message['chat']['id'] : "";
 //$date = isset($message['date']) ? $message['date'] : "";
 $text = isset($message['text']) ? $message['text'] : "";
 
-if(($text=="/acquisti") || ($text=="/acquisti consorzio") || ($text=="/acquisti gaion") || ($text=="/acquisti bonifico")) {
+if(($text=="/acquisti") || ($text=="/acquisti_consorzio") || ($text=="/acquisti_gaion") || ($text=="/acquisti_bonifico")) {
 	
 	$resp = acquisti($text);
 	$conta_anno = count($resp);
@@ -41,7 +41,7 @@ if(($text=="/acquisti") || ($text=="/acquisti consorzio") || ($text=="/acquisti 
 						. number_format($resp[$j][lista_documenti][$i][importo_totale],2,",",".");
 				}
 			}
-			if ($text=="/acquisti consorzio") {
+			if ($text=="/acquisti_consorzio") {
 				if (($resp[$j][lista_documenti][$i][prossima_scadenza]!="00/00/0000") 
 				    && ($resp[$j][lista_documenti][$i][nome]=="CONSORZIO AGRARIO DEL NORDEST SOC. COOP.")) {
 					$lista[] = "Scadenza: "
@@ -52,7 +52,7 @@ if(($text=="/acquisti") || ($text=="/acquisti consorzio") || ($text=="/acquisti 
 						. number_format($resp[$j][lista_documenti][$i][importo_totale],2,",",".");
 				}
 			}
-			if ($text=="/acquisti gaion") {
+			if ($text=="/acquisti_gaion") {
 				if (($resp[$j][lista_documenti][$i][prossima_scadenza]!="00/00/0000") 
 				    && ($resp[$j][lista_documenti][$i][nome]=="GAION AGRICOLTURA SAS")) {
 					$lista[] = "Scadenza: "
@@ -63,7 +63,7 @@ if(($text=="/acquisti") || ($text=="/acquisti consorzio") || ($text=="/acquisti 
 						. number_format($resp[$j][lista_documenti][$i][importo_totale],2,",",".");
 				}
 			}
-			if ($text=="/acquisti bonifico") {
+			if ($text=="/acquisti_bonifico") {
 				if (($resp[$j][lista_documenti][$i][prossima_scadenza]!="00/00/0000") 
 				    && ($resp[$j][lista_documenti][$i][nome]!="CONSORZIO AGRARIO DEL NORDEST SOC. COOP.") 
 				    && ($resp[$j][lista_documenti][$i][nome]!="GAION AGRICOLTURA SAS")) {
