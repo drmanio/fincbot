@@ -42,7 +42,8 @@ if(($text=="/acquisti") || ($text=="/acquisti consorzio") || ($text=="/acquisti 
 				}
 			}
 			if ($text=="/acquisti consorzio") {
-				if (($resp[$j][lista_documenti][$i][prossima_scadenza]!="00/00/0000") && ($resp[$j][lista_documenti][$i][id_fornitore]==6)) {
+				if (($resp[$j][lista_documenti][$i][prossima_scadenza]!="00/00/0000") 
+				    && ($resp[$j][lista_documenti][$i][nome]=="CONSORZIO AGRARIO DEL NORDEST SOC. COOP.")) {
 					$lista[] = "Scadenza: "
 						. substr($resp[$j][lista_documenti][$i][prossima_scadenza],6,4). "-"
 						. substr($resp[$j][lista_documenti][$i][prossima_scadenza],3,2). "-"
@@ -52,7 +53,8 @@ if(($text=="/acquisti") || ($text=="/acquisti consorzio") || ($text=="/acquisti 
 				}
 			}
 			if ($text=="/acquisti gaion") {
-				if (($resp[$j][lista_documenti][$i][prossima_scadenza]!="00/00/0000") && ($resp[$j][lista_documenti][$i][id_fornitore]==12)) {
+				if (($resp[$j][lista_documenti][$i][prossima_scadenza]!="00/00/0000") 
+				    && ($resp[$j][lista_documenti][$i][nome]=="GAION AGRICOLTURA SAS")) {
 					$lista[] = "Scadenza: "
 						. substr($resp[$j][lista_documenti][$i][prossima_scadenza],6,4). "-"
 						. substr($resp[$j][lista_documenti][$i][prossima_scadenza],3,2). "-"
@@ -62,7 +64,9 @@ if(($text=="/acquisti") || ($text=="/acquisti consorzio") || ($text=="/acquisti 
 				}
 			}
 			if ($text=="/acquisti bonifico") {
-				if (($resp[$j][lista_documenti][$i][prossima_scadenza]!="00/00/0000") && ($resp[$j][lista_documenti][$i][id_fornitore]!=6) && ($resp[$j][lista_documenti][$i][id_fornitore]!=12)) {
+				if (($resp[$j][lista_documenti][$i][prossima_scadenza]!="00/00/0000") 
+				    && ($resp[$j][lista_documenti][$i][nome]!="CONSORZIO AGRARIO DEL NORDEST SOC. COOP.") 
+				    && ($resp[$j][lista_documenti][$i][nome]!="GAION AGRICOLTURA SAS")) {
 					$lista[] = "Scadenza: "
 						. substr($resp[$j][lista_documenti][$i][prossima_scadenza],6,4). "-"
 						. substr($resp[$j][lista_documenti][$i][prossima_scadenza],3,2). "-"
