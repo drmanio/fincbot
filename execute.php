@@ -21,7 +21,7 @@ $chatId = isset($message['chat']['id']) ? $message['chat']['id'] : "";
 //$date = isset($message['date']) ? $message['date'] : "";
 $text = isset($message['text']) ? $message['text'] : "";
 
-if($text=="/acquisti") {
+if(($text=="/acquisti") || ($text=="/acquisti consorzio") || ($text=="/acquisti gaion") || ($text=="/acquisti bonifico")) {
 	
 	$resp = acquisti($text);
 	$conta_anno = count($resp);
@@ -31,13 +31,45 @@ if($text=="/acquisti") {
 		
 		$contaresp = count($resp[$j][lista_documenti]);
 		for ($i=0; $i<$contaresp; $i++) {
-			if ($resp[$j][lista_documenti][$i][prossima_scadenza]!="00/00/0000") {
-				$lista[] = "Scadenza: "
-					. substr($resp[$j][lista_documenti][$i][prossima_scadenza],6,4). "-"
-					. substr($resp[$j][lista_documenti][$i][prossima_scadenza],3,2). "-"
-					. substr($resp[$j][lista_documenti][$i][prossima_scadenza],0,2)
-					." - Fornitore: " . $resp[$j][lista_documenti][$i][nome] . " - Importo dovuto: € " 
-					. number_format($resp[$j][lista_documenti][$i][importo_totale],2,",",".");
+			if ($text=="/acquisti") {
+				if ($resp[$j][lista_documenti][$i][prossima_scadenza]!="00/00/0000") {
+					$lista[] = "Scadenza: "
+						. substr($resp[$j][lista_documenti][$i][prossima_scadenza],6,4). "-"
+						. substr($resp[$j][lista_documenti][$i][prossima_scadenza],3,2). "-"
+						. substr($resp[$j][lista_documenti][$i][prossima_scadenza],0,2)
+						." - " . $resp[$j][lista_documenti][$i][nome] . " : € " 
+						. number_format($resp[$j][lista_documenti][$i][importo_totale],2,",",".");
+				}
+			}
+			if ($text=="/acquisti consorzio") {
+				if (($resp[$j][lista_documenti][$i][prossima_scadenza]!="00/00/0000") && ($resp[$j][lista_documenti][$i][id_fornitore]=="6")) {
+					$lista[] = "Scadenza: "
+						. substr($resp[$j][lista_documenti][$i][prossima_scadenza],6,4). "-"
+						. substr($resp[$j][lista_documenti][$i][prossima_scadenza],3,2). "-"
+						. substr($resp[$j][lista_documenti][$i][prossima_scadenza],0,2)
+						." - " . $resp[$j][lista_documenti][$i][nome] . " : € " 
+						. number_format($resp[$j][lista_documenti][$i][importo_totale],2,",",".");
+				}
+			}
+			if ($text=="/acquisti gaion") {
+				if (($resp[$j][lista_documenti][$i][prossima_scadenza]!="00/00/0000") && ($resp[$j][lista_documenti][$i][id_fornitore]=="12")) {
+					$lista[] = "Scadenza: "
+						. substr($resp[$j][lista_documenti][$i][prossima_scadenza],6,4). "-"
+						. substr($resp[$j][lista_documenti][$i][prossima_scadenza],3,2). "-"
+						. substr($resp[$j][lista_documenti][$i][prossima_scadenza],0,2)
+						." - " . $resp[$j][lista_documenti][$i][nome] . " : € " 
+						. number_format($resp[$j][lista_documenti][$i][importo_totale],2,",",".");
+				}
+			}
+			if ($text=="/acquisti bonifico") {
+				if (($resp[$j][lista_documenti][$i][prossima_scadenza]!="00/00/0000") && ($resp[$j][lista_documenti][$i][id_fornitore]!="6") && ($resp[$j][lista_documenti][$i][id_fornitore]!="12")) {
+					$lista[] = "Scadenza: "
+						. substr($resp[$j][lista_documenti][$i][prossima_scadenza],6,4). "-"
+						. substr($resp[$j][lista_documenti][$i][prossima_scadenza],3,2). "-"
+						. substr($resp[$j][lista_documenti][$i][prossima_scadenza],0,2)
+						." - " . $resp[$j][lista_documenti][$i][nome] . " : € " 
+						. number_format($resp[$j][lista_documenti][$i][importo_totale],2,",",".");
+				}
 			}
 		}
 	}
