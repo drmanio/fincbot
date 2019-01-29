@@ -23,17 +23,6 @@ $text = isset($message['text']) ? $message['text'] : "";
 
 if(($text=="/acquisti") || ($text=="/acquisti_consorzio") || ($text=="/acquisti_gaion") || ($text=="/acquisti_bonifico")) {
 	
-	// mi preparo a restitutire al chiamante un messaggio relativo all'annualità oggetto della richiesta
-	header("Content-Type: application/json");
-	// la mia risposta è un array JSON composto da chat_id, text, method
-	// chat_id mi consente di rispondere allo specifico utente che ha scritto al bot
-	// text è il testo della risposta
-	$parameters = array('chat_id' => $chatId, "text" => "Indicare l'anno oggetto della richiesta");
-	// method è il metodo per l'invio di un messaggio (cfr. API di Telegram)
-	$parameters["method"] = "sendMessage";
-	// converto e stampo l'array JSON sulla response
-	echo json_encode($parameters);
-	
 	$resp = acquisti($text);
 	$conta_anno = count($resp);
 	$lista = array();
